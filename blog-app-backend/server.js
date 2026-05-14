@@ -35,7 +35,7 @@ app.use("/auth",commonApp)
 app.use(exp.static(path.join(__dirname, '../blog-app-frontend/dist')))
 
 // Anything that doesn't match the above, send back index.html
-app.get('(.*)', (req, res) => {
+app.get(/.*/, (req, res) => {
   // Check if it's an API request that failed - if so, don't send index.html
   if (req.url.startsWith('/user-api') || req.url.startsWith('/author-api') || req.url.startsWith('/admin-api') || req.url.startsWith('/auth')) {
     return res.status(404).json({message: `path ${req.url} is invalid`})
