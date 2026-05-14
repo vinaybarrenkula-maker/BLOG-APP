@@ -1,0 +1,31 @@
+### User Requests
+
+
+### User login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email":"user1@gmail.com",
+    "password": "user11"
+}
+###Read articles
+GET http://localhost:5000/user-api/articles
+
+### Add comment by user to an article
+PUT http://localhost:5000/user-api/articles
+Content-Type: application/json
+
+{
+    "articleId":"69b4e5b9b2c9995ccc5020cb",
+    "comment":"what is this"
+}
+
+### change password
+PUT http://localhost:5000/auth/password
+Content-Type: application/json
+
+{
+    "currentPassword":"user11",
+    "newPassword":"user111"
+}

@@ -1,0 +1,24 @@
+### User register
+POST http://localhost:5000/auth/users
+Content-Type: application/json
+
+{
+    "firstName":"user3",
+    "lastName":"user3",
+    "email":"user3@gmail.com",
+    "password":"user3",
+    "role":"AUTHOR",
+    "profileImageUrl":"https://example.com/avatars.user.png"
+}
+
+### User Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email":"author3@gmail.com",
+    "password": "author3"
+}
+
+### User Logout
+GET http://localhost:5000/auth/logout

@@ -1,0 +1,63 @@
+### User register
+POST http://localhost:5000/auth/users
+Content-Type: application/json
+
+{
+    "firstName":"author2",
+    "lastName":"author2",
+    "email":"author2@gmail.com",
+    "password":"author2",
+    "role":"AUTHOR",
+    "profileImageUrl":"https://example.com/avatars.user.png"
+}
+
+### User Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email": "author2@gmail.com",
+    "password": "author2"
+}
+
+### User Logout
+GET http://localhost:5000/auth/logout
+
+
+
+
+###Author requests
+
+###Create new Article
+POST http://localhost:5000/author-api/articles
+Content-Type: application/json
+
+{
+    "author":"69b3c8cb3df965ad7c687b1c",
+    "title":"Artile-3 by Author 2",
+    "category":"programming in java",
+    "content":"Test article on programming in java"
+}
+
+### Read own articles
+GET http://localhost:5000/author-api/articles
+
+### Edit an Article
+PUT http://localhost:5000/author-api/articles
+Content-Type: application/json
+
+{
+    "articleId":"69b3ab8de3c056ec3a904e3e",
+    "title":"Article-2 by author 1",
+    "category":"AI",
+    "content":"test article on AI and its updated"
+}
+
+### Delete/restore article by article ID (soft delete)
+PATCH http://localhost:5000/author-api/articles
+Content-Type: application/json
+
+{
+    "articleId":"69b3cbe572ddc6f2822fcf71",
+    "isArticleActive":false
+}
