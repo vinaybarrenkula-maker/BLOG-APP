@@ -4,12 +4,30 @@ import { ArticleModel } from '../models/ArticleModel.js'
 import {verifyToken} from '../middlewares/verifyToken.js'
 export const userApp=exp.Router()
 
-//read all articles of all authors
-userApp.get('/articles',verifyToken("USER"),async(req,res)=>{
+//read all articles of all authors (public)
+userApp.get('/articles',async(req,res)=>{
     //Read articles
-    let articles=await ArticleModel.find({isArticleActive:true})
+    let articles=await ArticleModel.find({isArticleActive:true}).populate('author','firstName lastName email')
     //send response
     res.status(200).json({message:"Articles found successfully",payload:articles})
+})
+
+//read a single article by id (public)
+userApp.get('/article/:id',async(req,res)=>{
+    const { id } = req.params;
+    try {
+        let article=await ArticleModel.findOne({_id:id, isArticleActive:true})
+            .populate('author','firstName lastName email')
+            .populate('comments.user','email');
+
+        if(!article){
+            return res.status(404).json({message:"Article not found"})
+        }
+
+        res.status(200).json({message:"Article found successfully",payload:article})
+    } catch(err) {
+        return res.status(400).json({message:"Invalid article id", error: err.message})
+    }
 })
 
 //Add comment to an article

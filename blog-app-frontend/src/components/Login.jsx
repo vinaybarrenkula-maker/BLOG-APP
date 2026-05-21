@@ -124,6 +124,14 @@ function Login() {
           </button>
         </form>
 
+        <button
+          type="button"
+          onClick={() => navigate("/browse")}
+          className="w-full mt-4 px-4 py-3 rounded-full border border-[#0066cc] text-[#0066cc] font-medium hover:bg-[#eff6ff] transition"
+        >
+          Continue as Guest
+        </button>
+
         {/* Footer */}
         <p className={`${mutedText} text-center mt-5`}>
           Don't have an account?{" "}

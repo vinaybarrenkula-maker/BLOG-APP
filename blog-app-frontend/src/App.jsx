@@ -12,6 +12,7 @@ import AuthorArticles from "./components/AuthorArticles";
 import EditArticle from './components/EditArticle'
 import WriteArticles from "./components/WriteArticles";
 import ArticleByID from "./components/ArticleById";
+import GuestArticles from "./components/GuestArticles";
 import {Toaster} from 'react-hot-toast'
 import ProtectedRoute from "./components/ProtectedRoute";
 import Unauthorized from "./components/Unauthorized";
@@ -32,6 +33,10 @@ const routerObj = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "browse",
+        element: <GuestArticles />,
       },
       {
         path: "user-profile",
@@ -88,11 +93,7 @@ const routerObj = createBrowserRouter([
       },
       {
         path: "article/:id",
-        element: (
-          <ProtectedRoute allowedRoles={["USER", "AUTHOR"]}>
-            <ArticleByID />
-          </ProtectedRoute>
-        ),
+        element: <ArticleByID />,
       },
       {
         path: "edit-article",
